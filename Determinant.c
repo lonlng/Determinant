@@ -4,7 +4,6 @@
 int main(int argc, char const *argv[])
 {
 	FILE *fp;
-	// char ch[] = "an\n";
 	fp = fopen("Test/test", "r");
 	if (fp == NULL)
 	{
@@ -28,7 +27,6 @@ int main(int argc, char const *argv[])
 		{
 		case 9:
 			y++;
-			printf("制y=%d表", y);
 			kk = 0;
 			break;
 		case 10:
@@ -36,7 +34,6 @@ int main(int argc, char const *argv[])
 			x++;
 			Nummm++;
 			kk = 0;
-			printf("换x=%d行", x);
 			break;
 		case 32:
 			break;
@@ -50,9 +47,6 @@ int main(int argc, char const *argv[])
 
 	} while (1);
 	printf("Hello world!\n");
-	// double Det_Array[4][4] = {{1, 2, 3, 4}, {2, 3, 4, 1}, {3, 4, 1, 2}, {4, 1, 2, 3}};
-
-	// int Nummm = sizeof(Det_Array[0]) / sizeof(Det_Array[0][0]);
 	printf("%d\n", Nummm);
 
 	double Row_A[Nummm];
