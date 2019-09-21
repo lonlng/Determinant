@@ -3,27 +3,65 @@
 #include <string.h>
 int main(int argc, char const *argv[])
 {
-		FILE *fp;
+	FILE *fp;
 	// char ch[] = "an\n";
 	fp = fopen("Test/test", "r");
-		if (fp == NULL)
+	if (fp == NULL)
 	{
 		perror("打开文件错误");
 		return (-1);
 	}
+	char Num[100][100];
+	int x = 0, y = 0;
+	int Nummm = 0;
+	int cool;
+	double Det_Array[100][100];
+	int kk = 0;
+	do
+	{
+		if (feof(fp))
+		{
+			break;
+		}
+		cool = fgetc(fp);
+		switch (cool)
+		{
+		case 9:
+			y++;
+			printf("制y=%d表", y);
+			kk = 0;
+			break;
+		case 10:
+			y = 0;
+			x++;
+			Nummm++;
+			kk = 0;
+			printf("换x=%d行", x);
+			break;
+		case 32:
+			break;
+
+		default:
+			Det_Array[x][y] = Det_Array[x][y] * 10 * kk + (cool - 48);
+			kk = 1;
+			printf("(%d,%d)=%.0f ", x, y, Det_Array[x][y]);
+			break;
+		}
+
+	} while (1);
 	printf("Hello world!\n");
-	double Det_Array[4][4] = {{1, 2, 3, 4}, {2, 3, 4, 1}, {3, 4, 1, 2}, {4, 1, 2, 3}};
+	// double Det_Array[4][4] = {{1, 2, 3, 4}, {2, 3, 4, 1}, {3, 4, 1, 2}, {4, 1, 2, 3}};
 
-	int Det_Row = sizeof(Det_Array[0]) / sizeof(Det_Array[0][0]);
-	printf("%d\n", Det_Row);
+	// int Nummm = sizeof(Det_Array[0]) / sizeof(Det_Array[0][0]);
+	printf("%d\n", Nummm);
 
-	double Row_A[Det_Row];
-	double Row_B[Det_Row];
+	double Row_A[Nummm];
+	double Row_B[Nummm];
 
 	double Num_A = 1;
 	double Num_B = 1;
 	double Num_C = 1;
-	for (int i = Det_Row - 1; i > 0; i--)
+	for (int i = Nummm - 1; i > 0; i--)
 	{
 
 		for (int j = 0; j < i; j++)
@@ -32,7 +70,7 @@ int main(int argc, char const *argv[])
 			Num_B = Det_Array[j][i];
 			Num_C = Num_A * Num_C;
 
-			for (int k = 0; k < Det_Row; k++)
+			for (int k = 0; k < Nummm; k++)
 			{
 				Row_A[k] = Det_Array[j][k] * Num_A;
 				Row_B[k] = Det_Array[i][k] * Num_B;
@@ -41,9 +79,9 @@ int main(int argc, char const *argv[])
 		}
 	}
 
-	for (int i = 0; i < Det_Row; i++)
+	for (int i = 0; i < Nummm; i++)
 	{
-		for (int j = 0; j < Det_Row; j++)
+		for (int j = 0; j < Nummm; j++)
 		{
 			printf("%f\t", Det_Array[i][j]);
 		}
@@ -51,13 +89,13 @@ int main(int argc, char const *argv[])
 	}
 
 	double Result = 1;
-	for (int i = 0; i < Det_Row; i++)
+	for (int i = 0; i < Nummm; i++)
 	{
 		Result = Det_Array[i][i] * Result;
 	}
 
-	Result = Result/Num_C;
-	printf("\n=%.0f\n",Result);
+	Result = Result / Num_C;
+	printf("\n=%.0f\n", Result);
 
 	return 0;
 }
