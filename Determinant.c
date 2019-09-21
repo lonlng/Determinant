@@ -1,6 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 int main(int argc, char const *argv[])
 {
+		FILE *fp;
+	// char ch[] = "an\n";
+	fp = fopen("Test/test", "r");
+		if (fp == NULL)
+	{
+		perror("打开文件错误");
+		return (-1);
+	}
 	printf("Hello world!\n");
 	double Det_Array[4][4] = {{1, 2, 3, 4}, {2, 3, 4, 1}, {3, 4, 1, 2}, {4, 1, 2, 3}};
 
