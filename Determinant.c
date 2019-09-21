@@ -102,41 +102,31 @@ int main(int argc, char const *argv[])
 	fputs(str_5, fp);
 
 	printf("|========================|\n");
-	// printf("|========================|\n");
-	// for (int i = 0; i < Nummm; i++)
-	// {
-	// 	for (int j = 0; j < Nummm; j++)
-	// 	{
-	// 		printf("%.0f\t", Det_Array[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-	// char Answer_1[50], Answer_3[50];
-	// char Answer_2 = "*", Answer_4 = "/";
-	// strcpy(Answer_1, "Answer=");
-
-	// strcat(Answer_1, Answer_2);
 	double Result = 1;
 	for (int i = 0; i < Nummm; i++)
 	{
 
 		Result = Det_Array[i][i] * Result;
 		printf("%.0f*", Det_Array[i][i]);
-		// itoa(Det_Array[i][i], Answer_3, 10);
-		// strcat(Answer_1, Answer_3);
-		// strcat(Answer_1, Answer_2);
+		char Result_3[100];
+		gcvt(Det_Array[i][i], 100, Result_3);
+		fputs(Result_3, fp);
+		fputc('*', fp);
 	}
+
+	// strcat(); 	函数？？
+	// itoa();		函数？？
+
+	fputc('/', fp);
+	char Result_4[100];
+	gcvt(Num_C, 100, Result_4);
+	fputs(Result_4, fp);
 	Result = Result / Num_C;
-	// strcat(Answer_1, Answer_4);
-	// itoa(Num_C, Answer_3, 10);
-	// strcat(Answer_1, Answer_3);
-	// Result = Result / Num_C;
-	// itoa(Result, Answer_3, 10);
-	// strcat(Answer_1, Answer_3);
-	// fputs(Answer_1, fp);
+
 	printf("\b/%.0f=%.0f\n", Num_C, Result);
 	char Result_2[100];
 	gcvt(Result, 100, Result_2);
+	fputc('=', fp);
 	fputs(Result_2, fp);
 	fputc('\n', fp);
 	fclose(fp);
