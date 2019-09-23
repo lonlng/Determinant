@@ -13,53 +13,58 @@ int main(int argc, char const *argv[])
 	char Num[100];
 	int x = 0, y = 0;
 	int Nummm = 0;
-	int cool;
+	int DelElement;
 	char str_3[100];
 	double Det_Array[100][100];
 	int kk = 0;
-	int Sign = 1;
-	do
-	{
-		if (feof(fp))
-		{
-			break;
-		}
-		// str_3 = fgetc(fp);
-		cool = fgetc(fp);
-		switch (cool)
-		{
-		case 9:
-			y++;
-			kk = 0;
-			break;
-		case 10:
-			y = 0;
-			x++;
-			Nummm++;
-			kk = 0;
-			break;
-		case 45:
-			Sign = -1;
-			break;
-		case 32:
-			break;
-		case 0:
-		case 1:
-			break;
+	int ElementSign = 1;
+	// do
+	// {
+	// 	if (feof(fp))
+	// 	{
+	// 		break;
+	// 	}
+	// 	// str_3 = fgetc(fp);
+	// 	DelElement = fgetc(fp);
+	// 	switch (DelElement)
+	// 	{
+	// 	case 9:
+	// 		y++;
+	// 		kk = 0;
+	// 		break;
+	// 	case 10:
+	// 		y = 0;
+	// 		x++;
+	// 		Nummm++;
+	// 		kk = 0;
+	// 		break;
+	// 	case 45:
+	// 		ElementSign = -1;
+	// 		break;
+	// 	case 32:
+	// 		break;
+	// 	case 0:
+	// 	case 1:
+	// 		break;
 
-		default:
-			Det_Array[x][y] = Det_Array[x][y] * 10 * kk + (cool - 48);
-			kk = 1;
-			Det_Array[x][y] = Det_Array[x][y] * Sign;
-			Sign = 1;
-			//atof函数将字符串转换为double类型
-			// Det_Array[x][y] = atof(str_3);
-			printf("(%d,%d)=%.0f ", x, y, Det_Array[x][y]);
-			break;
-		}
+	// 	default:
+	// 		Det_Array[x][y] = Det_Array[x][y] * 10 * kk + (DelElement - 48);
+	// 		kk = 1;
+	// 		Det_Array[x][y] = Det_Array[x][y] * ElementSign;
+	// 		ElementSign = 1;
+	// 		//atof函数将字符串转换为double类型
+	// 		// Det_Array[x][y] = atof(str_3);
+	// 		printf("(%d,%d)=%.0f ", x, y, Det_Array[x][y]);
+	// 		break;
+	// 	}
 
-	} while (1);
-	fclose(fp);
+	// } while (1);
+	// fclose(fp);
+	char DetDir[]="Test/test";
+	int *p = ReadWriteDetFile(DetDir);
+	Nummm =  *(*(p+0)+0);
+	printf("\n%d\n",Nummm);
+	return 0;
 	fp = fopen("Test/Answer", "w");
 	if (fp == NULL)
 	{
@@ -105,7 +110,8 @@ int main(int argc, char const *argv[])
 				}
 				fputs("\b\b\b\b\b\b\b|\n", fp);
 				printf("|\n");
-			}printf("//%0.f\n",Num_C);
+			}
+			printf("//%0.f\n", Num_C);
 		}
 	}
 	fputs(str_5, fp);
