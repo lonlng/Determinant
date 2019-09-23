@@ -17,6 +17,7 @@ int main(int argc, char const *argv[])
 	char str_3[100];
 	double Det_Array[100][100];
 	int kk = 0;
+	int Sign = 1;
 	do
 	{
 		if (feof(fp))
@@ -37,12 +38,20 @@ int main(int argc, char const *argv[])
 			Nummm++;
 			kk = 0;
 			break;
+		case 45:
+			Sign = -1;
+			break;
 		case 32:
+			break;
+		case 0:
+		case 1:
 			break;
 
 		default:
 			Det_Array[x][y] = Det_Array[x][y] * 10 * kk + (cool - 48);
 			kk = 1;
+			Det_Array[x][y] = Det_Array[x][y] * Sign;
+			Sign = 1;
 			//atof函数将字符串转换为double类型
 			// Det_Array[x][y] = atof(str_3);
 			printf("(%d,%d)=%.0f ", x, y, Det_Array[x][y]);
@@ -95,8 +104,8 @@ int main(int argc, char const *argv[])
 					printf("%s\t", Num);
 				}
 				fputs("\b\b\b\b\b\b\b|\n", fp);
-				printf("\b\b\b\b\b\b\b|\n");
-			}
+				printf("|\n");
+			}printf("//%0.f\n",Num_C);
 		}
 	}
 	fputs(str_5, fp);
